@@ -66,7 +66,7 @@ final class OrderServiceTest extends ApiTestCase
     public function testCreateOrderReturn()
     {
         $orderService = $this->buildOrderService();
-
+        new Create
         $creationCommand = new CreateOrderReturn(1, "Broken on arrival");
         $creationCommand->addItem(new DeclinationId('1_0'), 1, 1);
 
@@ -247,8 +247,8 @@ final class OrderServiceTest extends ApiTestCase
         $order = $this->buildOrderService()->getOrder(6);
 
         $this->assertSame(6, $order->getId());
-        $this->assertEquals(OrderStatus::COMPLETED(), $order->getStatus());
-        $this->assertCount(1, $order->getPayment());
+        $this->assertEquals(OrderStatus::STANDBY_BILLING(), $order->getStatus());
+        $this->assertNotEmpty($order->getPayment());
 
         //Check infos in Payment
         $payment = $order->getPayment();
