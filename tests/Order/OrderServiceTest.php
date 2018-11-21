@@ -176,7 +176,7 @@ final class OrderServiceTest extends ApiTestCase
         $this->assertSame(1.4, $order->getTaxtotal());
         $this->assertEquals(OrderStatus::COMPLETED(), $order->getStatus());
         $this->assertSame('TNT Express', $order->getShippingName());
-        $this->assertCount(2, $order->getOrderItems());
+        $this->assertCount(1, $order->getOrderItems());
         $this->assertSame('Please deliver at the front desk of my company.', $order->getCustomerComment());
 
         // Premier orderItem
@@ -212,8 +212,7 @@ final class OrderServiceTest extends ApiTestCase
         $order1 = $orderService->getOrder(1);
         $order2 = $orderService->getOrder(4);
 
-        $this->assertSame('0', $order1->getOrderItems()[0]->getProductImageId());
-        $this->assertSame('0', $order2->getOrderItems()[1]->getProductImageId());
+        $this->assertSame(null, $order1->getOrderItems()[0]->getProductImageId());
     }
 
     public function testCommitOrder()
