@@ -231,6 +231,29 @@ final class CompanyServiceTest extends ApiTestCase
         $this->assertSame('the-world-company-inc.', $company->getSlug());
     }
 
+    public function testRegisteringAC2CCVendorWithUploadFiles(): void
+    {
+        $service = $this->buildUserCompanyService();
+        $file = [
+            $this->mockUploadedFile('minimal.pdf')->getClientFilename(),
+            ];
+        
+        $result = $service->registerC2CCompany(null, 'C2C Vendor');
+
+        $this->assertInstanceOf(CompanyRegistrationResult::class, $result);
+
+        $company = $result->getCompany();
+        $this->assertInstanceOf(Company::class, $company);
+
+        $this->assertSame('C2C Vendor', $company->getName());
+        $this->assertSame('customer-3@world-company.com', $company->getEmail());
+        $this->assertInstanceOf(CompanyRegistrationResult::class, $result);
+
+        $files = $service->getCompanyFiles($company->getId());
+        $this->assertCount(1, $files);
+
+    }
+
     public function testCannotGetOtherCompanyInfoWithVendorAccount(): void
     {
         $this->expectException(ClientException::class);

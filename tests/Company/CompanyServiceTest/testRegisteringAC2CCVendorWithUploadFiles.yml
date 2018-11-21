@@ -1,0 +1,83 @@
+
+-
+    request:
+        method: GET
+        url: 'http://wizaplace.loc/api/v1/users/authenticate'
+        headers:
+            Host: wizaplace.loc
+            Accept-Encoding: null
+            Authorization: 'Basic Y3VzdG9tZXItM0B3b3JsZC1jb21wYW55LmNvbTpwYXNzd29yZC1jdXN0b21lci0z'
+            User-Agent: Wizaplace-PHP-SDK/dev-feature/wiz-261-upload-files-for-C2C-registration@6c1cef6
+            VCR-index: '0'
+            Accept: null
+    response:
+        status:
+            http_version: '1.1'
+            code: '200'
+            message: OK
+        headers:
+            Date: 'Wed, 21 Nov 2018 15:54:15 GMT'
+            Server: 'Apache/2.4.25 (Debian)'
+            Cache-Control: 'no-cache, private'
+            Content-Language: fr
+            X-Debug-Token: c6d5ec
+            X-Debug-Token-Link: 'http://wizaplace.loc/_profiler/c6d5ec'
+            Content-Length: '61'
+            Content-Type: application/json
+        body: '{"id":9,"apiKey":"eTEzbt6w\/UNvRVkS1FBsNprjz80V8WTG5ojzKqnn"}'
+-
+    request:
+        method: POST
+        url: 'http://wizaplace.loc/api/v1/companies/c2c'
+        headers:
+            Host: wizaplace.loc
+            Expect: null
+            Accept-Encoding: null
+            Content-Type: application/json
+            User-Agent: Wizaplace-PHP-SDK/dev-feature/wiz-261-upload-files-for-C2C-registration@6c1cef6
+            Authorization: 'token eTEzbt6w/UNvRVkS1FBsNprjz80V8WTG5ojzKqnn'
+            VCR-index: '1'
+            Accept: null
+        body: '{"name":"C2C Vendor"}'
+    response:
+        status:
+            http_version: '1.1'
+            code: '201'
+            message: Created
+        headers:
+            Date: 'Wed, 21 Nov 2018 15:54:16 GMT'
+            Server: 'Apache/2.4.25 (Debian)'
+            Cache-Control: 'no-cache, private'
+            Content-Language: fr
+            X-Debug-Token: ff9356
+            X-Debug-Token-Link: 'http://wizaplace.loc/_profiler/ff9356'
+            Set-Cookie: 'sf_redirect=%7B%22token%22%3A%22ff9356%22%2C%22route%22%3A%22api_register_c2c_company%22%2C%22method%22%3A%22POST%22%2C%22controller%22%3A%7B%22class%22%3A%22Wizacha%5C%5CAppBundle%5C%5CController%5C%5CApi%5C%5CCompanyController%22%2C%22method%22%3A%22registerC2CAction%22%2C%22file%22%3A%22%5C%2Fvagrant%5C%2Fsrc%5C%2FAppBundle%5C%2FController%5C%2FApi%5C%2FCompanyController.php%22%2C%22line%22%3A52%7D%2C%22status_code%22%3A201%2C%22status_text%22%3A%22Created%22%7D; path=/; httponly'
+            Content-Length: '367'
+            Content-Type: application/json
+        body: '{"id":6,"name":"C2C Vendor","slug":"c2c-vendor","email":"customer-3@world-company.com","description":"","zipcode":"","address":"","city":"","state":"","country":"","phoneNumber":"","legalStatus":"Vendeur particulier","siretNumber":"","vatNumber":"","capital":"","rcs":"","fax":"","url":"","legalRepresentativeFirstName":"","legalRepresentativeLastName":"","extra":[]}'
+-
+    request:
+        method: GET
+        url: 'http://wizaplace.loc/api/v1/companies/6/files'
+        headers:
+            Host: wizaplace.loc
+            Accept-Encoding: null
+            User-Agent: Wizaplace-PHP-SDK/dev-feature/wiz-261-upload-files-for-C2C-registration@6c1cef6
+            Authorization: 'token eTEzbt6w/UNvRVkS1FBsNprjz80V8WTG5ojzKqnn'
+            VCR-index: '2'
+            Accept: null
+    response:
+        status:
+            http_version: '1.1'
+            code: '200'
+            message: OK
+        headers:
+            Date: 'Wed, 21 Nov 2018 15:54:16 GMT'
+            Server: 'Apache/2.4.25 (Debian)'
+            Cache-Control: 'no-cache, private'
+            Content-Language: fr
+            X-Debug-Token: 8d3e65
+            X-Debug-Token-Link: 'http://wizaplace.loc/_profiler/8d3e65'
+            Content-Length: '2'
+            Content-Type: application/json
+        body: '[]'
