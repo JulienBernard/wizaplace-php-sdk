@@ -66,7 +66,6 @@ final class OrderServiceTest extends ApiTestCase
     public function testCreateOrderReturn()
     {
         $orderService = $this->buildOrderService();
-        new Create
         $creationCommand = new CreateOrderReturn(1, "Broken on arrival");
         $creationCommand->addItem(new DeclinationId('1_0'), 1, 1);
 
