@@ -20,6 +20,7 @@ use Wizaplace\SDK\Order\OrderItem;
 use Wizaplace\SDK\Order\OrderReturnStatus;
 use Wizaplace\SDK\Order\OrderService;
 use Wizaplace\SDK\Order\OrderStatus;
+use Wizaplace\SDK\Order\Payment;
 use Wizaplace\SDK\Order\ReturnItem;
 use Wizaplace\SDK\Tests\ApiTestCase;
 
@@ -239,6 +240,20 @@ final class OrderServiceTest extends ApiTestCase
 
         $this->expectException(NotFound::class);
         $this->buildOrderService()->commitOrder($commitCommand);
+    }
+
+    public function testGetOrderWithCommitmentDate()
+    {
+        $order = $this->buildOrderService()->getOrder(2);
+
+        $this->assertSame(2, $order->getId());
+        $this->assertEquals(OrderStatus::PROCESSED(), $order->getStatus());
+        $this->assertCount(1, $order->getPayment());
+
+        //Check infos in Payment
+        $payment = $order->getPayment();
+        $this->assertCount(1, $payment->getCommitmentDate());
+        $this->assertSame(null, $payment->getCommitmentDate());
     }
 
     private function buildOrderService(): OrderService
