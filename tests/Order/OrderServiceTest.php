@@ -244,15 +244,14 @@ final class OrderServiceTest extends ApiTestCase
 
     public function testGetOrderWithCommitmentDate()
     {
-        $order = $this->buildOrderService()->getOrder(2);
+        $order = $this->buildOrderService()->getOrder(6);
 
-        $this->assertSame(2, $order->getId());
-        $this->assertEquals(OrderStatus::PROCESSED(), $order->getStatus());
+        $this->assertSame(6, $order->getId());
+        $this->assertEquals(OrderStatus::COMPLETED(), $order->getStatus());
         $this->assertCount(1, $order->getPayment());
 
         //Check infos in Payment
         $payment = $order->getPayment();
-        $this->assertCount(1, $payment->getCommitmentDate());
         $this->assertSame(null, $payment->getCommitmentDate());
     }
 
