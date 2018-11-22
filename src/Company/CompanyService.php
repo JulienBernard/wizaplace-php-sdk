@@ -243,7 +243,8 @@ final class CompanyService extends AbstractService
 
         $responseData = $this->client->post("companies/$companyId/files", [
             RequestOptions::MULTIPART => $files,
-        ]);
+            ]);
+        
         return array_map(static function (array $data) {
             return new FileUploadResult($data['error'] ?? null);
         }, $responseData);
