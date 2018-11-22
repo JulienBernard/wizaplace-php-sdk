@@ -9,6 +9,7 @@
 - Added `Wizaplace\SDK\Vendor\Order\OrderService::generateMondialRelayLabel`
 - Added `\Wizaplace\SDK\Order\OrganisationOrderService::getOrder`
 - Added attribute `hidden` to `\Wizaplace\SDK\Organisation\OrganisationBasket`
+- Added parameter `files` to `Wizaplace\SDK\Company\CompanyService::registerC2Ccompany`
 
 ## 1.41.0
 
