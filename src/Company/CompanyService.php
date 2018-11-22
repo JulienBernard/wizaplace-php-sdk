@@ -58,7 +58,7 @@ final class CompanyService extends AbstractService
      *
      * @throws AuthenticationRequired
      */
-    public function registerC2CCompany(?array $files, $companyName = ''): CompanyRegistrationResult
+    public function registerC2CCompany($companyName = '', array $files = []): CompanyRegistrationResult
     {
         $this->client->mustBeAuthenticated();
         $responseData = $this->client->post('companies/c2c', [
@@ -72,7 +72,7 @@ final class CompanyService extends AbstractService
         //If parameter $files is not null,
         //we call uploadRegistrationFiles() method
         $fileUploadResults = [];
-        if(!is_null($files)) {
+        if(!empty($files)) {
             $fileUploadResults = $this->uploadRegistrationFiles($company->getId(), $files);
         }
 

@@ -8,6 +8,7 @@ declare(strict_types = 1);
 namespace Wizaplace\SDK\Tests\Company;
 
 use GuzzleHttp\Exception\ClientException;
+use PhpParser\Node\Scalar\MagicConst\Dir;
 use Wizaplace\SDK\Authentication\AuthenticationRequired;
 use Wizaplace\SDK\Company\Company;
 use Wizaplace\SDK\Company\CompanyRegistration;
@@ -86,7 +87,8 @@ final class CompanyServiceTest extends ApiTestCase
 
         // Update file
         $file = $this->mockUploadedFile('minimal.pdf');
-
+        var_dump($file->getStream());
+        die();
         $update = $companyService->updateFile($company->getId(), 'idCard', [
             'name'     => "idCard",
             'contents' => $file->getStream(),
@@ -235,10 +237,14 @@ final class CompanyServiceTest extends ApiTestCase
     {
         $service = $this->buildUserCompanyService();
         $file = [
-            $this->mockUploadedFile('minimal.pdf')->getClientFilename(),
+                    [
+                        'name'     => 'idCard',
+                        'contents' => fopen(__DIR__.'/../fixtures/files/minimal.pdf', 'r'),
+                        'filename' => 'minimal.pdf',
+                    ],
             ];
         
-        $result = $service->registerC2CCompany(null, 'C2C Vendor');
+        $result = $service->registerC2CCompany('C2C Vendor', $file);
 
         $this->assertInstanceOf(CompanyRegistrationResult::class, $result);
 
@@ -250,8 +256,7 @@ final class CompanyServiceTest extends ApiTestCase
         $this->assertInstanceOf(CompanyRegistrationResult::class, $result);
 
         $files = $service->getCompanyFiles($company->getId());
-        $this->assertCount(1, $files);
-
+        $this->assertCount(3, $files);
     }
 
     public function testCannotGetOtherCompanyInfoWithVendorAccount(): void
