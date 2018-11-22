@@ -243,7 +243,6 @@ final class CompanyServiceTest extends ApiTestCase
                         'filename' => 'minimal.pdf',
                     ],
             ];
-        
         $result = $service->registerC2CCompany('C2C Vendor', $file);
 
         $this->assertInstanceOf(CompanyRegistrationResult::class, $result);
