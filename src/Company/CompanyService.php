@@ -72,7 +72,7 @@ final class CompanyService extends AbstractService
         //If parameter $files is not null,
         //we call uploadRegistrationFiles() method
         $fileUploadResults = [];
-        if(!empty($files)) {
+        if (!empty($files)) {
             $fileUploadResults = $this->uploadRegistrationFiles($company->getId(), $files);
         }
 
