@@ -10,6 +10,7 @@
 - Added `\Wizaplace\SDK\Order\OrganisationOrderService::getOrder`
 - Added attribute `hidden` to `\Wizaplace\SDK\Organisation\OrganisationBasket`
 - Added parameter `files` to `Wizaplace\SDK\Company\CompanyService::registerC2Ccompany`
+- Added `\Wizaplace\SDK\Cms\MenuItem::isTargetBlank`
 
 ## 1.41.0
 
