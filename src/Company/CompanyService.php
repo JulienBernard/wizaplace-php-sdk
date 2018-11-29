@@ -235,7 +235,7 @@ final class CompanyService extends AbstractService
      * @param array $files {@see \Wizaplace\SDK\Company\CompanyRegistration::addFile}
      * @return FileUploadResult[] a map of result by uploaded file.
      */
-    private function uploadRegistrationFiles(int $companyId, array $files, bool $c2c = false): array
+    private function uploadRegistrationFiles(int $companyId, array $files): array
     {
         if (empty($files)) {
             return [];

@@ -8,7 +8,6 @@ declare(strict_types = 1);
 namespace Wizaplace\SDK\Tests\Company;
 
 use GuzzleHttp\Exception\ClientException;
-use PhpParser\Node\Scalar\MagicConst\Dir;
 use Wizaplace\SDK\Authentication\AuthenticationRequired;
 use Wizaplace\SDK\Company\Company;
 use Wizaplace\SDK\Company\CompanyRegistration;
@@ -87,8 +86,6 @@ final class CompanyServiceTest extends ApiTestCase
 
         // Update file
         $file = $this->mockUploadedFile('minimal.pdf');
-        var_dump($file->getStream());
-        die();
         $update = $companyService->updateFile($company->getId(), 'idCard', [
             'name'     => "idCard",
             'contents' => $file->getStream(),
