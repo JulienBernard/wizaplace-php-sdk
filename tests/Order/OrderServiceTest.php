@@ -15,6 +15,7 @@ use Wizaplace\SDK\Exception\NotFound;
 use Wizaplace\SDK\Exception\OrderNotFound;
 use Wizaplace\SDK\Order\AfterSalesServiceRequest;
 use Wizaplace\SDK\Order\CreateOrderReturn;
+use Wizaplace\SDK\Order\Order;
 use Wizaplace\SDK\Order\OrderCommitmentCommand;
 use Wizaplace\SDK\Order\OrderItem;
 use Wizaplace\SDK\Order\OrderReturnStatus;
@@ -242,8 +243,10 @@ final class OrderServiceTest extends ApiTestCase
 
     public function testGetOrderWithCommitmentDate()
     {
-        $order = $this->buildOrderService()->getOrder(6);
+        $orderService = $this->buildOrderService();
+        $order = $orderService->getOrder(6);
 
+        $order->getPayment();
         $this->assertSame(6, $order->getId());
         $this->assertEquals(OrderStatus::STANDBY_BILLING(), $order->getStatus());
         $this->assertNotEmpty($order->getPayment());
