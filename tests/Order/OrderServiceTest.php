@@ -253,7 +253,9 @@ final class OrderServiceTest extends ApiTestCase
 
         //Check infos in Payment
         $payment = $order->getPayment();
-        $this->assertSame(null, $payment->getCommitmentDate());
+        $date = '2018-11-30';
+        $this->assertInstanceOf(DateTimeImmutable::class, $payment->getCommitmentDate());
+        $this->assertEquals($date, $payment->getCommitmentDate()->format('Y-m-d'));
     }
 
     private function buildOrderService(): OrderService
