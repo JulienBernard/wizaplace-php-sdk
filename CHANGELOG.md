@@ -2,6 +2,8 @@
 
 ## Next Release
 
+- Added `Wizaplace\SDK\Vendor\Order\Payment::getCommitmentDate`
+
 ### New features
 
 - Added `Wizaplace\SDK\Basket\BasketService::setMondialRelayPickupPoint`
@@ -9,11 +11,7 @@
 - Added `Wizaplace\SDK\Vendor\Order\OrderService::generateMondialRelayLabel`
 - Added `\Wizaplace\SDK\Order\OrganisationOrderService::getOrder`
 - Added attribute `hidden` to `\Wizaplace\SDK\Organisation\OrganisationBasket`
-<<<<<<< HEAD
 - Added `\Wizaplace\SDK\Cms\MenuItem::isTargetBlank`
-=======
-- Added `Wizaplace\SDK\Vendor\Order\Payment::getCommitmentDate`
->>>>>>> update changelog
 
 ## 1.41.0
 
